@@ -5,6 +5,14 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_char = '¦'
+    let g:indentLine_color_term = 24
+    let g:indentLine_color_gui = '#00557c'
+'''
+
+[[plugins]]
 repo = 'cohama/lexima.vim'
 hook_add = '''
     call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
