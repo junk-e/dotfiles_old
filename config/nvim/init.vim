@@ -176,4 +176,22 @@ nnoremap s <Nop>
 " Others "{{{
 "-------------------------------------------------------------------------------
 
+" TeX "{{{
+"---------
+
+" Fix filetype to tex (Default:plaintex)
+augroup tex_fix_filetype
+    autocmd!
+    autocmd BufEnter *.tex setl filetype=tex
+augroup END
+
+" Enable automatic line breaks and colorcolumn
+augroup tex_auto_wrapping
+    autocmd!
+    autocmd BufEnter *.tex setlocal textwidth=80
+    autocmd Filetype tex setlocal colorcolumn=81
+    autocmd Filetype tex setlocal formatoptions+=tcmMq
+augroup END
+
+"}}}
 "}}}
