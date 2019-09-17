@@ -14,10 +14,53 @@ if &compatible
     set nocompatible
 endif
 
+" Dein.vim "{{{
+"-------------------------------------------------------------------------------
+
+" Set dein paths
+let s:config_home = expand('~/.config')
+let s:nvimdir = s:config_home . '/nvim'
+let s:cache_home = expand('~/.cache')
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_github = s:dein_dir . '/repos/github.com'
+let s:dein_repo_name = 'Shougo/dein.vim'
+let s:dein_repo_dir = s:dein_github . '/' . s:dein_repo_name
+
+" Check dein has been installed or not.
+if !isdirectory(s:dein_repo_dir)
+    let s:git = system("which git")
+    if strlen(s:git) != 0
+        echo 'dein is not installed, install now.'
+        let s:dein_repo = 'https://github.com' . '/' .  s:dein_repo_name
+        echo 'git clone ' . s:dein_repo . ' ' . s:dein_repo_dir
+        call system('git clone ' . s:dein_repo . ' ' . s:dein_repo_dir)
+    endif
+endif
+
+" Add the dein installation directory into runtimepath
+let &runtimepath = &runtimepath . ',' . s:dein_repo_dir
+
+" Begin plugin installation
+if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
+        let s:toml = s:nvimdir . '/dein.toml'
+        let s:lazy_toml = s:nvimdir . '/dein_lazy.toml'
+        call dein#load_toml(s:toml, {'lazy': 0})
+        call dein#load_toml(s:lazy_toml, {'lazy': 1})
+    call dein#end()
+    call dein#save_state()
+endif
 
 " Required
 filetype plugin indent on
 syntax enable
+
+" Installation check
+if dein#check_install()
+    call dein#install()
+endif
+
+"}}}
 
 " System settings "{{{
 "-------------------------------------------------------------------------------
