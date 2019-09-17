@@ -153,6 +153,18 @@ augroup no_wrapping
     autocmd BufEnter * set textwidth=0
 augroup END
 
+" Folding
+set foldmethod=marker
+set foldlevel=2
+set foldcolumn=3
+
+" NOTE: Save_folding are not working
+"augroup save_folding
+"    autocmd!
+"    autocmd BufWinLeave * mkview
+"    autocmd BufWinEnter * silent loadview
+"augroup END
+
 "}}}
 
 " Key mappings "{{{
