@@ -137,7 +137,7 @@ set smartindent
 
 " Display invisible characters
 set list
-set listchars=trail:-,nbsp:%
+set listchars=nbsp:%
 
 " Settings of brackets
 set matchpairs& matchpairs+=<:>
@@ -164,6 +164,21 @@ set foldcolumn=3
 "    autocmd BufWinLeave * mkview
 "    autocmd BufWinEnter * silent loadview
 "augroup END
+
+augroup delete_unnrcessary_space
+    autocmd!
+    autocmd BufWritePre * call s:remove_unnecessary_space()
+augroup END
+
+function! s:remove_unnecessary_space()
+    " delete last spaces
+    %s/\s\+$//ge
+
+    " delete last blank lines
+    while getline('$') == ""
+            $delete _
+    endwhile
+endfunction
 
 "}}}
 
