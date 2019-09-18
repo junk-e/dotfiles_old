@@ -137,7 +137,7 @@ set smartindent
 
 " Display invisible characters
 set list
-set listchars=nbsp:%
+set listchars=tab:¦\ ,nbsp:%
 
 " Settings of brackets
 set matchpairs& matchpairs+=<:>
@@ -218,6 +218,16 @@ augroup tex_auto_wrapping
     autocmd BufEnter *.tex setlocal textwidth=80
     autocmd Filetype tex setlocal colorcolumn=81
     autocmd Filetype tex setlocal formatoptions+=tcmMq
+augroup END
+
+"}}}
+
+" neosnippet "{{{
+"----------------
+
+augroup snip_noexpand
+    autocmd!
+    autocmd Filetype neosnippet setlocal noexpandtab
 augroup END
 
 "}}}
