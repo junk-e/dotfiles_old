@@ -1,0 +1,24 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_char = '¦'
+    let g:indentLine_color_term = 24
+    let g:indentLine_color_gui = '#00557c'
+'''
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+hook_add = '''
+    call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
+    call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
+    call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'latex'})
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
