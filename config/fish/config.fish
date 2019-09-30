@@ -25,5 +25,9 @@ alias gb='git branch'
 alias gl='tig'
 alias gco='git checkout'
 alias gcom='git checkout master'
+alias gss='git stash -u'
+alias gsa='git stash apply'
+alias gsd='git stash drop'
+alias gsl='git stash list'
 
 #}}}
